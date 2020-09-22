@@ -1,1 +1,6 @@
-# cracking-coding-interview
+# Cracking the Coding Interview  
+Problems from the book "Cracking the Coding Interview" [1].  
+
+* Chapter 1 - Arrays and Strings  
+
+McDowell, Gayle Laakmann. Cracking the Coding Interview: 189 Programming Questions and Solutions. CareerCup, LLC, 2019. 
