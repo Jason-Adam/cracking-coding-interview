@@ -4,5 +4,11 @@
 # and that you are given the "true" length of the string.
 
 
+# O(n) time | O(n) space
 def urlify_one(string: str, true_length: int) -> str:
-    return "%20".join(string.split(" "))
+    split = list(string)[0:true_length]
+    for idx in range(true_length):
+        if split[idx] == " ":
+            split[idx] = "%20"
+
+    return "".join(split)
