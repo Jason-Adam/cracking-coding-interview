@@ -5,7 +5,7 @@
 
 # O(n) time | O(n) space
 # Hashmap approach
-def letters_unique_hm(string: str) -> bool:
+def is_unique_one(string: str) -> bool:
     c: dict = {}
     for s in string:
         if c.get(s):
@@ -17,7 +17,7 @@ def letters_unique_hm(string: str) -> bool:
 
 # O(n) time | O(1) space
 # Bool Array
-def letters_unique_ba(string: str) -> bool:
+def is_unique_two(string: str) -> bool:
     # Assumes ASCII character set
     if len(string) > 128:
         return False

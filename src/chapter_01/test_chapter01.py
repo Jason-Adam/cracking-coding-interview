@@ -1,22 +1,42 @@
-import unittest
-from .problem_0101 import letters_unique_ba, letters_unique_hm
+import pytest
+
+from .problem_0101 import is_unique_one, is_unique_two
+from .problem_0102 import is_permutation_one, is_permutation_two
 
 
-class TestLettersUnique(unittest.TestCase):
-    test_cases = [
-        ("abcd", True),
-        ("s4fad", True),
-        ("", True),
-        ("aaaaa", False),
-        ("abcdk hh", False),
-    ]
-    test_functions = [letters_unique_hm, letters_unique_ba]
-
-    def test(self):
-        for letters_unique in self.test_functions:
-            for text, expected in self.test_cases:
-                assert letters_unique(text) == expected
+is_unique_cases = [
+    ("abcd", True),
+    ("aabc", False),
+    ("abcdefg", True),
+    ("abcdefgA", True),
+]
 
 
-if __name__ == "__main__":
-    unittest.main()
+@pytest.mark.parametrize("input,expected", is_unique_cases)
+def test_is_unqiue_one(input, expected):
+    assert is_unique_one(input) == expected
+
+
+@pytest.mark.parametrize("input,expected", is_unique_cases)
+def test_is_unqiue_two(input, expected):
+    assert is_unique_two(input) == expected
+
+
+is_permutation_cases = [
+    ("abcd", "dcba", True),
+    ("abcd", "dcb", False),
+    ("abcd", "dcbd", False),
+    ("abcdefghh", "hhabcdefg", True),
+    ("aaaaa", "aaaaa", True),
+    ("aa aa", "aa aa", True),
+]
+
+
+@pytest.mark.parametrize("first,second,expected", is_permutation_cases)
+def test_is_permutation_one(first, second, expected):
+    assert is_permutation_one(first, second) == expected
+
+
+@pytest.mark.parametrize("first,second,expected", is_permutation_cases)
+def test_is_permutation_two(first, second, expected):
+    assert is_permutation_two(first, second) == expected
