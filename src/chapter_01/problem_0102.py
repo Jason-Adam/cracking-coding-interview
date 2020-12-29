@@ -2,9 +2,10 @@
 # Given two string, write a method to decide if one is a permutation of the other.
 
 
-# Use Hashmap
-# O(n) time | O(n) space
 def is_permutation_one(first_string: str, second_string: str) -> bool:
+    """O(n) time | O(n) space
+    Hashmap Approach
+    """
     # Assumption is that permutation means each string contains same letters
     if len(first_string) != len(second_string):
         return False
@@ -29,9 +30,11 @@ def is_permutation_one(first_string: str, second_string: str) -> bool:
     return all([v == 0 for v in letters.values()])
 
 
-# Sort the Strings -- Assumes QuickSort
-# O(n log(n)) time | O(log(n) space
 def is_permutation_two(first_string: str, second_string: str) -> bool:
+    """O(n log(n)) time | O(n) space
+    Sort the strings first and compare.
+    Timsort in Python has O(n log(n)) time complexity.
+    """
     if len(first_string) != len(second_string):
         return False
 

@@ -4,9 +4,15 @@
 # and that you are given the "true" length of the string.
 
 
-# O(n) time | O(n) space
 def urlify_one(string: str, true_length: int) -> str:
+    """O(n) time | O(n) space
+    Immutable String Python Implementation.
+    If we assume a character array instead of immutable string, then
+    we arrive at O(n) time | O(1) space as we can update the char array
+    in place vs creating intermediate variables and copies.
+    """
     split = list(string)[0:true_length]
+
     for idx in range(true_length):
         if split[idx] == " ":
             split[idx] = "%20"

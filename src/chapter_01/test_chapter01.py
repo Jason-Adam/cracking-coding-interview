@@ -1,6 +1,6 @@
 import pytest
 
-from .problem_0101 import is_unique_one, is_unique_two
+from .problem_0101 import is_unique_one, is_unique_two, is_unique_pythonic
 from .problem_0102 import is_permutation_one, is_permutation_two
 from .problem_0103 import urlify_one
 
@@ -21,6 +21,11 @@ def test_is_unqiue_one(input, expected):
 @pytest.mark.parametrize("input,expected", is_unique_cases)
 def test_is_unqiue_two(input, expected):
     assert is_unique_two(input) == expected
+
+
+@pytest.mark.parametrize("input,expected", is_unique_cases)
+def test_is_unqiue_pythonic(input, expected):
+    assert is_unique_pythonic(input) == expected
 
 
 is_permutation_cases = [
@@ -45,6 +50,7 @@ def test_is_permutation_two(first, second, expected):
 
 urlify_cases = [
     ("Mr John Smith  ", 13, "Mr%20John%20Smith"),
+    ("hello there  ", 11, "hello%20there"),
 ]
 
 
