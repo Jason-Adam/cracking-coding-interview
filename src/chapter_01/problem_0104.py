@@ -46,6 +46,9 @@ def is_palindrome_permutation_one(string: str) -> bool:
 
 
 class PermutationPalindrome:
+    """O(n) time | O(1) space
+    Bit Shifting Approach
+    """
     def __init__(self, string: str):
         self.string = string
 
