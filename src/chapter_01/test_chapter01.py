@@ -3,6 +3,7 @@ import pytest
 from .problem_0101 import is_unique_one, is_unique_two, is_unique_pythonic
 from .problem_0102 import is_permutation_one, is_permutation_two
 from .problem_0103 import urlify_one
+from .problem_0104 import is_palindrome_permutation_one, PermutationPalindrome
 
 
 is_unique_cases = [
@@ -57,3 +58,26 @@ urlify_cases = [
 @pytest.mark.parametrize("string,true_length,expected", urlify_cases)
 def test_urlify_one(string, true_length, expected):
     assert urlify_one(string, true_length) == expected
+
+
+is_palindrome_permutation_cases = [
+    ("Tact Coa", True),
+    ("mom", True),
+    ("this is wrong", False),
+    ("1", False),
+    (" ", False),
+    ("r", True),
+    ("", False),
+    ("siton A potaTopan Otis!", True),
+]
+
+
+@pytest.mark.parametrize("input,expected", is_palindrome_permutation_cases)
+def test_is_palindrome_permutation_one(input, expected):
+    assert is_palindrome_permutation_one(input) == expected
+
+
+# These are currently failing
+@pytest.mark.parametrize("input,expected", is_palindrome_permutation_cases)
+def test_is_palindrome_permutation_two(input, expected):
+    assert PermutationPalindrome(input).is_permutation() == expected
