@@ -22,7 +22,6 @@ def is_palindrome_permutation_one(string: str) -> bool:
             return False
 
     letters: dict = {}
-
     for letter in string:
         if letter.isalpha():
             if not letters.get(letter.lower()):
@@ -45,43 +44,41 @@ def is_palindrome_permutation_one(string: str) -> bool:
     return False
 
 
-class PermutationPalindrome:
+def is_palindrome_permutation_two(string: str) -> bool:
     """O(n) time | O(1) space
-    Bit Shifting Approach
+    This approach uses a fixed array with the unicode
+    values for each character.
     """
-    def __init__(self, string: str):
-        self.string = string
+    if len(string) == 0:
+        return False
 
-    def _toggle(self, bit_vector: int, index: int) -> int:
-        if index < 0:
-            return bit_vector
+    if len(string) == 1:
+        if string.isalpha():
+            return True
+        else:
+            return False
 
-        mask = 1 << index
-        bit_vector ^= mask
+    table = [0 for _ in range(ord("z") - ord("a") + 1)]
+    count_odd = 0
+    for letter in string:
+        x = char_number(letter)
+        if x != -1:
+            table[x] += 1
+            if table[x] % 2 != 0:
+                count_odd += 1
+            else:
+                count_odd -= 1
 
-        return bit_vector
+    return count_odd <= 1
 
-    def _get_char_number(self, letter: str) -> int:
-        a = ord("a")
-        z = ord("z")
-        val = ord(letter)
 
-        if a <= val and val <= z:
-            return val - a
+def char_number(char: str) -> int:
+    """Helper Function for determining char number."""
+    a = ord("a")
+    z = ord("z")
+    val = ord(char.lower())
 
-        return -1
+    if a <= val <= z:
+        return val - a
 
-    def _create_bit_vector(self) -> int:
-        bit_vector = 0
-        for letter in self.string:
-            x = self._get_char_number(letter)
-            bit_vector = self._toggle(bit_vector, x)
-
-        return bit_vector
-
-    def _check_at_most_one_bit_set(self, bit_vector: int) -> bool:
-        return (bit_vector and (bit_vector - 1)) == 0
-
-    def is_permutation(self) -> bool:
-        bit_vector = self._create_bit_vector()
-        return self._check_at_most_one_bit_set(bit_vector)
+    return -1
