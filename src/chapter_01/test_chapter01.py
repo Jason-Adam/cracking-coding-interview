@@ -1,10 +1,10 @@
 import pytest
 
-from .problem_0101 import is_unique_one, is_unique_two, is_unique_pythonic
+from .problem_0101 import is_unique_one, is_unique_pythonic, is_unique_two
 from .problem_0102 import is_permutation_one, is_permutation_two
 from .problem_0103 import urlify_one
 from .problem_0104 import is_palindrome_permutation_one, is_palindrome_permutation_two
-
+from .problem_0105 import one_away
 
 is_unique_cases = [
     ("abcd", True),
@@ -77,7 +77,23 @@ def test_is_palindrome_permutation_one(input, expected):
     assert is_palindrome_permutation_one(input) == expected
 
 
-# These are currently failing
 @pytest.mark.parametrize("input,expected", is_palindrome_permutation_cases)
 def test_is_palindrome_permutation_two(input, expected):
     assert is_palindrome_permutation_two(input) == expected
+
+
+one_away_cases = [
+    ("pale", "ple", True),
+    ("pales", "pale", True),
+    ("pale", "bale", True),
+    ("pale", "bake", False),
+    ("pale", "p", False),
+    ("pale", "pal", True),
+    ("pale", "paleaaa", False),
+    ("pale", "pale", True),
+]
+
+
+@pytest.mark.parametrize("first,second,expected", one_away_cases)
+def test_one_away(first, second, expected):
+    assert one_away(first, second) == expected
