@@ -5,6 +5,7 @@ from .problem_0102 import is_permutation_one, is_permutation_two
 from .problem_0103 import urlify_one
 from .problem_0104 import is_palindrome_permutation_one, is_palindrome_permutation_two
 from .problem_0105 import one_away
+from .problem_0106 import run_length_encode
 
 is_unique_cases = [
     ("abcd", True),
@@ -97,3 +98,15 @@ one_away_cases = [
 @pytest.mark.parametrize("first,second,expected", one_away_cases)
 def test_one_away(first, second, expected):
     assert one_away(first, second) == expected
+
+
+run_length_encode_cases = [
+    ("aabcccccaaa", "a2b1c5a3"),
+    ("aa", "aa"),
+    ("aaa", "a3"),
+]
+
+
+@pytest.mark.parametrize("input,expected", run_length_encode_cases)
+def test_run_length_encode(input, expected):
+    assert run_length_encode(input) == expected
