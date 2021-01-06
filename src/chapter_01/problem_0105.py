@@ -6,30 +6,26 @@
 
 
 def one_away(first: str, second: str) -> bool:
-    """O(n) time | O(n) space"""
+    """O(n) time | O(1) space"""
     if len(first) == len(second):
         edits = 0
         for i in range(len(first)):
             if first[i] != second[i]:
                 edits += 1
-
         if edits <= 1:
             return True
 
-    if len(first) - len(second) == 1:
-        letters: dict = {}
-        for f in first:
-            if not letters.get(f):
-                letters[f] = 1
+    if abs(len(first) - len(second)) == 1:
+        f = 0
+        s = 0
+        while f < len(first) and s < len(second):
+            if first[f] != second[s]:
+                if f != s:
+                    return False
+                f += 1
             else:
-                letters[f] += 1
-
-        for s in second:
-            if not letters.get(s):
-                return False
-            else:
-                letters[s] -= 1
-
-        return sum([v for v in letters.values()]) == 1
+                f += 1
+                s += 1
+        return True
 
     return False
