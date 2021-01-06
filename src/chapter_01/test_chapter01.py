@@ -104,6 +104,7 @@ run_length_encode_cases = [
     ("aabcccccaaa", "a2b1c5a3"),
     ("aa", "aa"),
     ("aaa", "a3"),
+    ("aaaffffffaacccceeee", "a3f6a2c4e4"),
 ]
 
 
