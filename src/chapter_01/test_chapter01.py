@@ -6,6 +6,7 @@ from .problem_0103 import urlify_one
 from .problem_0104 import is_palindrome_permutation_one, is_palindrome_permutation_two
 from .problem_0105 import one_away
 from .problem_0106 import run_length_encode
+from .problem_0107 import rotate_matrix
 
 is_unique_cases = [
     ("abcd", True),
@@ -111,3 +112,15 @@ run_length_encode_cases = [
 @pytest.mark.parametrize("input,expected", run_length_encode_cases)
 def test_run_length_encode(input, expected):
     assert run_length_encode(input) == expected
+
+
+rotate_matrix_cases = [
+    ([[1, 2, 3], [4, 5, 6], [7, 8, 9]], True, [[7, 4, 1], [8, 5, 2], [9, 6, 3]])
+]
+
+
+@pytest.mark.parametrize("input,expected,rotated_input", rotate_matrix_cases)
+def test_rotate_matrix(input, expected, rotated_input):
+    assert rotate_matrix(input) == expected
+    # Check if rotation happened
+    assert input == rotated_input
