@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-python -m pytest -vv
+poetry run python -m pytest -vv

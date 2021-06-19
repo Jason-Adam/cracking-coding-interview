@@ -12,6 +12,7 @@ def is_palindrome_permutation_one(string: str) -> bool:
     counts that are all even and can contain only one character
     (at most) with an odd count.
     """
+
     if len(string) == 0:
         return False
 
@@ -22,6 +23,7 @@ def is_palindrome_permutation_one(string: str) -> bool:
             return False
 
     letters: dict = {}
+
     for letter in string:
         if letter.isalpha():
             if not letters.get(letter.lower()):
@@ -38,7 +40,7 @@ def is_palindrome_permutation_one(string: str) -> bool:
         else:
             odds += 1
 
-    if odds == 0 or odds == 1:
+    if odds in (0, 1):
         return True
 
     return False
@@ -49,6 +51,7 @@ def is_palindrome_permutation_two(string: str) -> bool:
     This approach uses a fixed array with the unicode
     values for each character.
     """
+
     if len(string) == 0:
         return False
 
@@ -60,10 +63,13 @@ def is_palindrome_permutation_two(string: str) -> bool:
 
     table = [0 for _ in range(ord("z") - ord("a") + 1)]
     count_odd = 0
+
     for letter in string:
         x = char_number(letter)
+
         if x != -1:
             table[x] += 1
+
             if table[x] % 2 != 0:
                 count_odd += 1
             else:
